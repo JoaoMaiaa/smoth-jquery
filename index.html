@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Smooth</title>
+    <style>
+        h1:first-child{
+            margin-top:0;
+        }
+
+        h1{
+            height:100vh;
+            text-align:center;
+            margin-top:50px;
+        }
+        
+        nav ul{
+            position:fixed;
+            width:100%;
+            display:flex;
+            justify-content: center;
+            background-color: #2c2c2c;
+            padding:10px;
+            border-bottom: #2c2c2c;
+        }
+
+        nav a {
+            text-decoration: none;
+            list-style: none;
+            margin:0 10px;
+            color:#fff;
+        }
+
+        nav a:hover{
+            border-bottom: #fff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <a href="#home"><li>Início</li></a>
+                <a href="#about"><li>Sobre</li></a>
+                <a href="#product"><li>Produto</li></a>
+                <a href="#contact"><li>Contato</li></a>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 id="home">Início</h1>
+    <h1 id="about">Sobre</h1>
+    <h1 id="product">Produto</h1>
+    <h1 id="contact">Contato</h1>
+    
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    $(()=>{
+        // colocar o click 
+        // prevenir o botão
+        // pegar o href do id clicado atraves do attr
+        // pegar a posição dele em relação ao topo
+        // aplicar no html e body um animate
+        // scrollTop da posição que foi pega no target
+        $('nav a').on('click',function(e){
+
+            e.preventDefault();
+            
+            // seleciona o id
+            let id = $(this).attr('href');
+
+            // ja pego o id seleciona ele em relação ao top
+            let target = $(id).offset().top;
+
+            // aplicar em todo o html a animação
+            $('html, body').animate({
+                scrollTop : target
+            }, 500);
+
+            // console.log(target);
+
+        });
+    });
+</script>
+</body>
+</html>
